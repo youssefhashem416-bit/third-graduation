@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>معًا | قسم الإعاقة السمعية</title>
+
+<meta name="theme-color" content="#237b91">
+<meta name="description" content="قسم الإعاقة السمعية في موقع معًا، أنشطة تعليمية وتفاعلية للتعلم والتواصل.">
+<link rel="manifest" href="./manifest.json">
 
 <style>
 * {
@@ -295,8 +299,6 @@ footer {
 
 <main class="container">
 
-    <!-- مقدمة -->
-
     <section class="panel">
         <h2>مرحبًا بك في قسم الإعاقة السمعية</h2>
         <p>
@@ -305,8 +307,6 @@ footer {
             والنصوص والأنشطة التفاعلية.
         </p>
     </section>
-
-    <!-- الحروف -->
 
     <section class="panel">
         <h2>🔤 تعلم الحروف العربية</h2>
@@ -353,8 +353,6 @@ footer {
         </div>
     </section>
 
-    <!-- الكلمات -->
-
     <section class="panel">
         <h2>🖼️ تعلم الكلمات بالصور</h2>
         <p>تعرف على الكلمات من خلال الصور والرموز.</p>
@@ -387,8 +385,6 @@ footer {
 
         </div>
     </section>
-
-    <!-- جمل تواصل -->
 
     <section class="panel">
         <h2>💬 جمل التواصل اليومية</h2>
@@ -423,8 +419,6 @@ footer {
         </div>
     </section>
 
-    <!-- تدريبات -->
-
     <section class="panel">
         <h2>🧠 اختبر معلوماتك</h2>
         <p>ما اسم الفاكهة التالية؟</p>
@@ -439,8 +433,6 @@ footer {
 
         <p class="status" id="quizResult" aria-live="polite"></p>
     </section>
-
-    <!-- تحويل النص إلى كلام -->
 
     <section class="panel">
         <h2>📝 تحويل النص إلى كلام</h2>
@@ -462,8 +454,6 @@ footer {
 
         <p class="status" id="speechStatus" aria-live="polite"></p>
     </section>
-
-    <!-- إعدادات الصفحة -->
 
     <section class="panel">
         <h2>⚙️ إعدادات سهولة الاستخدام</h2>
@@ -538,7 +528,7 @@ function readText() {
 
     const speech = new SpeechSynthesisUtterance(text);
     speech.lang = "ar-EG";
-    speech.rate = 0.9;
+    speech.rate = 0.70;
     speech.pitch = 1;
 
     speech.onstart = function() {
@@ -586,6 +576,20 @@ function changeFont(value) {
 
 function toggleContrast() {
     document.body.classList.toggle("high-contrast");
+}
+
+/* تسجيل Service Worker */
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(function() {
+                console.log("تم تسجيل Service Worker بنجاح");
+            })
+            .catch(function(error) {
+                console.error("حدث خطأ في تسجيل Service Worker:", error);
+            });
+    });
 }
 
 </script>
