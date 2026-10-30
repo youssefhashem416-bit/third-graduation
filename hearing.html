@@ -1,0 +1,594 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معًا | قسم الإعاقة السمعية</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #f4f8fc;
+    color: #26334a;
+    line-height: 1.9;
+}
+
+header {
+    background: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 3px 15px #00000010;
+}
+
+.logo {
+    font-size: 27px;
+    color: #237b91;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #f4a742;
+}
+
+header a {
+    color: #34415a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 4px solid orange;
+    outline-offset: 3px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #e3f8fb, #eef0ff);
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.hero h1 {
+    color: #237b91;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #58647b;
+    font-size: 18px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
+
+.panel {
+    background: white;
+    padding: 25px;
+    margin-bottom: 22px;
+    border-radius: 18px;
+    box-shadow: 0 5px 22px #26334a12;
+}
+
+.panel h2 {
+    color: #237b91;
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+.panel p {
+    color: #58647b;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.card {
+    background: #f1f9fc;
+    border: 2px solid #d7edf3;
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.card h3 {
+    color: #237b91;
+    margin-bottom: 8px;
+}
+
+.card .symbol {
+    font-size: 35px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.buttons button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #237b91;
+    color: white;
+    font-size: 16px;
+}
+
+.buttons button:hover {
+    opacity: .88;
+}
+
+.buttons .dark {
+    background: #25345b;
+}
+
+.buttons .stop {
+    background: #c0392b;
+}
+
+.video-box {
+    background: #f1f9fc;
+    padding: 20px;
+    border-radius: 14px;
+    margin-top: 15px;
+}
+
+.video-box h3 {
+    color: #237b91;
+}
+
+textarea {
+    width: 100%;
+    min-height: 130px;
+    padding: 15px;
+    margin-top: 12px;
+    border: 2px solid #cbdde8;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 18px;
+    resize: vertical;
+}
+
+input[type=range] {
+    width: 100%;
+    accent-color: #237b91;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 5px;
+}
+
+.note {
+    background: #fff4dc;
+    color: #664b16;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.status {
+    color: #237b91;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.back-container {
+    text-align: center;
+    margin: 35px 0;
+}
+
+.back {
+    display: inline-block;
+    background: #25345b;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+footer {
+    background: #25345b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* التباين العالي */
+
+.high-contrast {
+    background: black !important;
+    color: white !important;
+}
+
+.high-contrast header,
+.high-contrast .panel,
+.high-contrast .card,
+.high-contrast .video-box {
+    background: black !important;
+    color: white !important;
+    border: 2px solid yellow !important;
+}
+
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast p,
+.high-contrast label,
+.high-contrast header a {
+    color: white !important;
+}
+
+.high-contrast textarea {
+    background: black;
+    color: white;
+    border: 2px solid yellow;
+}
+
+.high-contrast .note {
+    background: #222;
+    color: yellow;
+    border: 2px solid yellow;
+}
+
+@media(max-width:600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">معًا <span>♥</span></div>
+    <a href="index.html">🏠 العودة إلى الصفحة الرئيسية</a>
+</header>
+
+<section class="hero">
+    <h1>🦻 قسم الإعاقة السمعية</h1>
+    <p>نتعلم ونتواصل بطرق بصرية وتفاعلية سهلة.</p>
+</section>
+
+<main class="container">
+
+    <!-- مقدمة -->
+
+    <section class="panel">
+        <h2>مرحبًا بك في قسم الإعاقة السمعية</h2>
+        <p>
+            يهدف هذا القسم إلى توفير أنشطة تعليمية تساعد الأشخاص ذوي
+            الإعاقة السمعية على التعلم والتواصل من خلال الصور
+            والنصوص والأنشطة التفاعلية.
+        </p>
+    </section>
+
+    <!-- الحروف -->
+
+    <section class="panel">
+        <h2>🔤 تعلم الحروف العربية</h2>
+        <p>اختر حرفًا للتعرف عليه ومشاهدة مثال عليه.</p>
+
+        <div class="cards">
+
+            <div class="card">
+                <span class="symbol">أ</span>
+                <h3>ألف</h3>
+                <p>أرنب 🐰</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">ب</span>
+                <h3>باء</h3>
+                <p>بطة 🦆</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">ت</span>
+                <h3>تاء</h3>
+                <p>تفاحة 🍎</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">ث</span>
+                <h3>ثاء</h3>
+                <p>ثعلب 🦊</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">ج</span>
+                <h3>جيم</h3>
+                <p>جمل 🐪</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">ح</span>
+                <h3>حاء</h3>
+                <p>حصان 🐎</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- الكلمات -->
+
+    <section class="panel">
+        <h2>🖼️ تعلم الكلمات بالصور</h2>
+        <p>تعرف على الكلمات من خلال الصور والرموز.</p>
+
+        <div class="cards">
+
+            <div class="card">
+                <span class="symbol">🍎</span>
+                <h3>تفاحة</h3>
+                <p>هذه تفاحة حمراء.</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">🐱</span>
+                <h3>قطة</h3>
+                <p>هذه قطة صغيرة.</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">🏠</span>
+                <h3>منزل</h3>
+                <p>هذا منزل جميل.</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">🌳</span>
+                <h3>شجرة</h3>
+                <p>هذه شجرة خضراء.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- جمل تواصل -->
+
+    <section class="panel">
+        <h2>💬 جمل التواصل اليومية</h2>
+        <p>اختر الجملة التي تريد عرضها بشكل واضح.</p>
+
+        <div class="cards">
+
+            <div class="card">
+                <span class="symbol">👋</span>
+                <h3>مرحبًا</h3>
+                <p>أهلًا وسهلًا بك.</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">🙏</span>
+                <h3>شكرًا</h3>
+                <p>شكرًا لك على مساعدتك.</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">❓</span>
+                <h3>أحتاج مساعدة</h3>
+                <p>من فضلك ساعدني.</p>
+            </div>
+
+            <div class="card">
+                <span class="symbol">👍</span>
+                <h3>موافق</h3>
+                <p>نعم، أنا موافق.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- تدريبات -->
+
+    <section class="panel">
+        <h2>🧠 اختبر معلوماتك</h2>
+        <p>ما اسم الفاكهة التالية؟</p>
+
+        <div style="font-size:65px; margin:15px 0;">🍎</div>
+
+        <div class="buttons">
+            <button onclick="checkAnswer('موز')">موز</button>
+            <button onclick="checkAnswer('تفاحة')">تفاحة</button>
+            <button onclick="checkAnswer('برتقال')">برتقال</button>
+        </div>
+
+        <p class="status" id="quizResult" aria-live="polite"></p>
+    </section>
+
+    <!-- تحويل النص إلى كلام -->
+
+    <section class="panel">
+        <h2>📝 تحويل النص إلى كلام</h2>
+        <p>
+            اكتب جملة واضغط على تشغيل الصوت.
+            هذه الخاصية اختيارية ويمكن استخدامها للمساعدة في التعلم.
+        </p>
+
+        <textarea
+            id="speechText"
+            placeholder="اكتب جملة هنا..."
+            aria-label="اكتب جملة لتحويلها إلى كلام"
+        ></textarea>
+
+        <div class="buttons">
+            <button onclick="readText()">▶ تشغيل الصوت</button>
+            <button class="stop" onclick="stopSpeech()">⏹ إيقاف الصوت</button>
+        </div>
+
+        <p class="status" id="speechStatus" aria-live="polite"></p>
+    </section>
+
+    <!-- إعدادات الصفحة -->
+
+    <section class="panel">
+        <h2>⚙️ إعدادات سهولة الاستخدام</h2>
+
+        <label for="fontSize">حجم الخط:</label>
+        <input
+            type="range"
+            id="fontSize"
+            min="16"
+            max="32"
+            value="18"
+            oninput="changeFont(this.value)"
+        >
+
+        <div class="buttons">
+            <button class="dark" onclick="toggleContrast()">
+                ◐ تفعيل التباين العالي
+            </button>
+        </div>
+
+        <div class="note">
+            💡 تم تصميم الصفحة لتكون واضحة وسهلة الاستخدام
+            على الكمبيوتر والهاتف.
+        </div>
+    </section>
+
+    <div class="back-container">
+        <a href="index.html" class="back">العودة إلى الصفحة الرئيسية</a>
+    </div>
+
+</main>
+
+<footer>
+    <p>معًا – عالم بلا حواجز © 2026</p>
+    <p>قسم الإعاقة السمعية</p>
+</footer>
+
+<script>
+
+/* اختبار المعلومات */
+
+function checkAnswer(answer) {
+
+    const result = document.getElementById("quizResult");
+
+    if (answer === "تفاحة") {
+        result.innerText = "✅ إجابة صحيحة! أحسنت.";
+        result.style.color = "green";
+    } else {
+        result.innerText = "❌ إجابة غير صحيحة، حاول مرة أخرى.";
+        result.style.color = "red";
+    }
+}
+
+/* تحويل النص إلى كلام */
+
+function readText() {
+
+    const text = document.getElementById("speechText").value.trim();
+
+    if (!text) {
+        alert("اكتب النص أولاً.");
+        return;
+    }
+
+    if (!("speechSynthesis" in window)) {
+        alert("المتصفح لا يدعم تشغيل الصوت.");
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = "ar-EG";
+    speech.rate = 0.9;
+    speech.pitch = 1;
+
+    speech.onstart = function() {
+        document.getElementById("speechStatus").innerText =
+            "🔊 يتم تشغيل الصوت...";
+    };
+
+    speech.onend = function() {
+        document.getElementById("speechStatus").innerText =
+            "انتهى تشغيل الصوت.";
+    };
+
+    speech.onerror = function() {
+        document.getElementById("speechStatus").innerText =
+            "حدث خطأ أثناء تشغيل الصوت.";
+    };
+
+    window.speechSynthesis.speak(speech);
+}
+
+function stopSpeech() {
+
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+
+        document.getElementById("speechStatus").innerText =
+            "تم إيقاف الصوت.";
+    }
+}
+
+/* تكبير وتصغير الخط */
+
+function changeFont(value) {
+
+    document.body.style.fontSize = value + "px";
+
+    document.querySelectorAll(
+        ".panel p, .card p, .card h3, .hero p"
+    ).forEach(function(element) {
+        element.style.fontSize = value + "px";
+    });
+}
+
+/* التباين العالي */
+
+function toggleContrast() {
+    document.body.classList.toggle("high-contrast");
+}
+
+</script>
+
+</body>
+</html>

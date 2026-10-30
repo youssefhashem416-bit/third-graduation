@@ -1,0 +1,574 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معًا | قسم الإعاقة البصرية</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #f5f7fc;
+    color: #26334a;
+    line-height: 1.9;
+}
+
+header {
+    background: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 3px 15px #00000010;
+}
+
+.logo {
+    font-size: 27px;
+    color: #4266db;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #f4a742;
+}
+
+header a {
+    color: #34415a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+button, textarea {
+    font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+textarea:focus-visible {
+    outline: 4px solid orange;
+    outline-offset: 3px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #eaf0ff, #fff5e9);
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.hero h1 {
+    color: #304fc0;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #58647b;
+    font-size: 18px;
+}
+
+.container {
+    max-width: 950px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
+
+.panel {
+    background: white;
+    padding: 25px;
+    margin-bottom: 22px;
+    border-radius: 18px;
+    box-shadow: 0 5px 22px #26334a12;
+}
+
+.panel h2 {
+    color: #304fc0;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.panel p {
+    color: #58647b;
+}
+
+textarea {
+    width: 100%;
+    min-height: 170px;
+    padding: 18px;
+    margin-top: 15px;
+    border: 2px solid #cbd7f2;
+    border-radius: 12px;
+    background: white;
+    color: #26334a;
+    font-size: 20px;
+    line-height: 1.9;
+    resize: vertical;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.buttons button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #4266db;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.buttons .stop {
+    background: #c0392b;
+}
+
+.buttons .dark {
+    background: #25345b;
+}
+
+.buttons button:hover {
+    opacity: 0.9;
+}
+
+.presets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.presets button {
+    padding: 20px;
+    border: 2px solid #dce5ff;
+    border-radius: 13px;
+    background: #f5f7ff;
+    color: #304fc0;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.presets button span {
+    display: block;
+    font-size: 32px;
+    margin-bottom: 7px;
+}
+
+.presets button:hover {
+    background: #eaf0ff;
+}
+
+.settings {
+    background: #f5f7ff;
+    border: 1px solid #dce5ff;
+    padding: 18px;
+    border-radius: 13px;
+    margin-top: 15px;
+}
+
+.settings label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 5px;
+}
+
+.settings input {
+    width: 100%;
+    accent-color: #4266db;
+}
+
+.status {
+    margin-top: 15px;
+    color: #3156bd;
+    font-weight: bold;
+}
+
+.note {
+    background: #fff4dc;
+    color: #664b16;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.back {
+    display: inline-block;
+    background: #25345b;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.back-container {
+    text-align: center;
+    margin: 35px 0;
+}
+
+footer {
+    background: #25345b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* التباين العالي */
+
+.high-contrast {
+    background: black !important;
+    color: white !important;
+}
+
+.high-contrast header,
+.high-contrast .panel,
+.high-contrast .settings,
+.high-contrast .presets button {
+    background: black !important;
+    color: white !important;
+    border: 2px solid yellow !important;
+}
+
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast p,
+.high-contrast label,
+.high-contrast header a {
+    color: white !important;
+}
+
+.high-contrast textarea {
+    background: black !important;
+    color: white !important;
+    border: 2px solid yellow !important;
+}
+
+.high-contrast .note {
+    background: #222 !important;
+    color: yellow !important;
+    border: 2px solid yellow;
+}
+
+@media(max-width:600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">معًا <span>♥</span></div>
+    <a href="index.html">🏠 العودة إلى الصفحة الرئيسية</a>
+</header>
+
+<section class="hero">
+    <h1>👁️ قسم الإعاقة البصرية</h1>
+    <p>التعلم والاستماع وقراءة النصوص بسهولة ووضوح.</p>
+</section>
+
+<main class="container">
+
+    <!-- قارئ النصوص -->
+
+    <section class="panel">
+        <h2>🔊 قارئ النصوص</h2>
+
+        <p>
+            اكتب النص الذي تريد الاستماع إليه،
+            ثم اضغط على زر تشغيل القراءة.
+        </p>
+
+        <textarea
+            id="readerText"
+            aria-label="اكتب النص الذي تريد الاستماع إليه"
+            placeholder="اكتب النص هنا..."
+        ></textarea>
+
+        <div class="buttons">
+            <button onclick="readInput()">▶ استمع إلى النص</button>
+            <button class="stop" onclick="stopReading()">⏹ إيقاف القراءة</button>
+            <button class="dark" onclick="clearText()">مسح النص</button>
+        </div>
+
+        <p class="status" id="status" aria-live="polite">
+            اكتب نصًا أو اختر نصًا جاهزًا.
+        </p>
+    </section>
+
+    <!-- النصوص الجاهزة -->
+
+    <section class="panel">
+        <h2>📖 نصوص جاهزة للاستماع</h2>
+        <p>اختر أحد النصوص التالية لتجربته.</p>
+
+        <div class="presets">
+
+            <button onclick="usePreset('مرحبًا بك في موقع معًا. نحن هنا لمساعدتك على التعلم والتواصل بسهولة.')">
+                <span>👋</span>
+                رسالة ترحيب
+            </button>
+
+            <button onclick="usePreset('التعلم رحلة ممتعة. حاول كل يوم أن تتعلم شيئًا جديدًا.')">
+                <span>📚</span>
+                رسالة تعليمية
+            </button>
+
+            <button onclick="usePreset('أنت تستطيع تحقيق أهدافك. استمر في المحاولة ولا تستسلم.')">
+                <span>⭐</span>
+                رسالة تشجيعية
+            </button>
+
+            <button onclick="usePreset('اضغط على زر الاستماع لتشغيل النص. ويمكنك الضغط على زر الإيقاف لإيقاف الصوت.')">
+                <span>ℹ️</span>
+                تعليمات الاستخدام
+            </button>
+
+        </div>
+    </section>
+
+    <!-- أدوات تحسين القراءة -->
+
+    <section class="panel">
+        <h2>🔠 أدوات تحسين القراءة</h2>
+        <p>تحكم في حجم الخط ووضوح الألوان حسب احتياجك.</p>
+
+        <div class="buttons">
+            <button onclick="changeFont(3)">تكبير الخط A+</button>
+            <button onclick="changeFont(-3)">تصغير الخط A-</button>
+            <button class="dark" onclick="toggleContrast()">◐ التباين العالي</button>
+        </div>
+
+        <div class="note">
+            💡 يمكنك استخدام أدوات التحكم في حجم الخط والتباين
+            لتحسين قراءة محتوى هذه الصفحة.
+        </div>
+    </section>
+
+    <!-- إعدادات الصوت -->
+
+    <section class="panel">
+        <h2>🎙️ إعدادات الصوت</h2>
+
+        <div class="settings">
+
+            <label for="speed">
+                سرعة الكلام:
+                <span id="speedValue">0.90</span>
+            </label>
+
+            <input
+                type="range"
+                id="speed"
+                min="0.65"
+                max="1.2"
+                step="0.05"
+                value="0.9"
+                oninput="changeSpeed(this.value)"
+            >
+
+            <div class="buttons">
+                <button onclick="testVoice()">▶ تجربة الصوت</button>
+                <button class="stop" onclick="stopReading()">⏹ إيقاف الصوت</button>
+            </div>
+
+            <p class="status" id="voiceInfo">
+                جاري البحث عن الأصوات العربية...
+            </p>
+
+        </div>
+    </section>
+
+    <div class="back-container">
+        <a href="index.html" class="back">العودة إلى الصفحة الرئيسية</a>
+    </div>
+
+</main>
+
+<footer>
+    <p>معًا – عالم بلا حواجز © 2026</p>
+    <p>قسم الإعاقة البصرية</p>
+</footer>
+
+<script>
+
+let fontSize = 18;
+let speechRate = 0.9;
+let arabicVoice = null;
+
+/* البحث عن الصوت العربي */
+
+function loadVoices() {
+
+    if (!("speechSynthesis" in window)) {
+        document.getElementById("voiceInfo").innerText =
+            "المتصفح لا يدعم القراءة الصوتية.";
+        return;
+    }
+
+    const voices = window.speechSynthesis.getVoices();
+
+    const arabicVoices = voices.filter(function(voice) {
+        return voice.lang.toLowerCase().startsWith("ar");
+    });
+
+    if (arabicVoices.length > 0) {
+
+        arabicVoice =
+            arabicVoices.find(v => v.lang.toLowerCase() === "ar-eg") ||
+            arabicVoices.find(v => v.lang.toLowerCase().includes("ar-sa")) ||
+            arabicVoices[0];
+
+        document.getElementById("voiceInfo").innerText =
+            "الصوت المستخدم: " + arabicVoice.name;
+
+    } else {
+
+        document.getElementById("voiceInfo").innerText =
+            "لم يتم العثور على صوت عربي. سيتم استخدام الصوت الافتراضي.";
+
+    }
+}
+
+if ("speechSynthesis" in window) {
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+/* تشغيل القراءة */
+
+function speak(text) {
+
+    if (!("speechSynthesis" in window)) {
+        alert("المتصفح لا يدعم القراءة الصوتية.");
+        return;
+    }
+
+    if (!text || !text.trim()) {
+        alert("لا يوجد نص لقراءته.");
+        return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+
+    utterance.lang = arabicVoice ? arabicVoice.lang : "ar-EG";
+
+    if (arabicVoice) {
+        utterance.voice = arabicVoice;
+    }
+
+    utterance.rate = speechRate;
+    utterance.pitch = 1.05;
+    utterance.volume = 1;
+
+    utterance.onstart = function() {
+        document.getElementById("status").innerText =
+            "🔊 تتم قراءة النص الآن...";
+    };
+
+    utterance.onend = function() {
+        document.getElementById("status").innerText =
+            "انتهت قراءة النص.";
+    };
+
+    utterance.onerror = function() {
+        document.getElementById("status").innerText =
+            "حدثت مشكلة أثناء تشغيل الصوت.";
+    };
+
+    window.speechSynthesis.speak(utterance);
+}
+
+function readInput() {
+    const text = document.getElementById("readerText").value.trim();
+
+    if (!text) {
+        alert("من فضلك اكتب النص أولاً.");
+        return;
+    }
+
+    speak(text);
+}
+
+function usePreset(text) {
+    document.getElementById("readerText").value = text;
+    speak(text);
+}
+
+function testVoice() {
+    speak("مرحباً بك في قسم الإعاقة البصرية. يمكنك الاستماع إلى النصوص والتحكم في سرعة القراءة.");
+}
+
+function stopReading() {
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        document.getElementById("status").innerText =
+            "تم إيقاف القراءة.";
+    }
+}
+
+function clearText() {
+    document.getElementById("readerText").value = "";
+    stopReading();
+    document.getElementById("status").innerText = "تم مسح النص.";
+}
+
+/* التحكم في السرعة */
+
+function changeSpeed(value) {
+    speechRate = parseFloat(value);
+
+    document.getElementById("speedValue").innerText =
+        speechRate.toFixed(2);
+}
+
+/* تكبير وتصغير الخط */
+
+function changeFont(amount) {
+    fontSize += amount;
+
+    if (fontSize < 14) fontSize = 14;
+    if (fontSize > 36) fontSize = 36;
+
+    document.querySelectorAll(".panel, .hero, header, footer").forEach(function(element) {
+        element.style.fontSize = fontSize + "px";
+    });
+
+    document.getElementById("readerText").style.fontSize =
+        fontSize + "px";
+}
+
+/* التباين العالي */
+
+function toggleContrast() {
+    document.body.classList.toggle("high-contrast");
+}
+
+</script>
+
+</body>
+</html>

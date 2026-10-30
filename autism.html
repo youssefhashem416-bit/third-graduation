@@ -1,0 +1,687 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قسم اضطراب طيف التوحد - معًا</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+font-family:Tahoma,Arial,sans-serif;
+background:#f5f7fc;
+color:#26334a;
+line-height:1.9;
+transition:.3s;
+}
+
+header{
+background:white;
+padding:16px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:12px;
+box-shadow:0 3px 15px #00000010;
+}
+
+.logo{font-size:28px;color:#4266db;font-weight:bold}
+.logo span{color:#f4a742}
+
+nav{display:flex;gap:18px;flex-wrap:wrap}
+nav a{color:#34415a;text-decoration:none;font-weight:bold}
+
+button,a{font-family:inherit}
+
+button:focus-visible,a:focus-visible,input:focus-visible{
+outline:4px solid orange;
+outline-offset:3px;
+}
+
+.container{
+max-width:1100px;
+margin:35px auto;
+padding:0 18px;
+}
+
+.panel{
+background:white;
+padding:25px;
+margin-bottom:22px;
+border-radius:18px;
+box-shadow:0 5px 22px #26334a12;
+}
+
+.panel h2{color:#304fc0;margin-bottom:12px}
+.panel p{color:#58647b}
+
+.buttons{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-top:15px;
+}
+
+.buttons button{
+padding:11px 18px;
+border:none;
+border-radius:10px;
+background:#4266db;
+color:white;
+font-size:15px;
+cursor:pointer;
+}
+
+.buttons .stop{background:#c0392b}
+.buttons .dark{background:#25345b}
+
+.back-btn{
+display:inline-block;
+background:#25345b;
+color:white;
+padding:11px 22px;
+border-radius:10px;
+text-decoration:none;
+font-size:16px;
+}
+
+.tabs{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin:20px 0;
+}
+
+.tab-btn{
+padding:11px 20px;
+border:none;
+border-radius:10px;
+background:#eaf0ff;
+color:#304fc0;
+font-size:16px;
+cursor:pointer;
+}
+
+.tab-btn.active{
+background:#4266db;
+color:white;
+}
+
+.activity-box{display:none}
+.activity-box.active{display:block}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+gap:15px;
+margin-top:18px;
+}
+
+.item-card{
+background:#f4f6ff;
+border:2px solid #e0e7ff;
+padding:20px;
+border-radius:14px;
+text-align:center;
+cursor:pointer;
+transition:.2s;
+}
+
+.item-card:hover{
+background:#eaf0ff;
+transform:translateY(-3px);
+}
+
+.item-card .emoji{
+font-size:38px;
+display:block;
+margin-bottom:8px;
+}
+
+.item-card h3{color:#304fc0}
+.item-card p{color:#58647b}
+
+.result{
+background:#eaf0ff;
+padding:17px;
+border-radius:12px;
+margin-top:15px;
+color:#304fc0;
+font-weight:bold;
+min-height:55px;
+}
+
+.schedule-row{
+display:flex;
+justify-content:space-between;
+gap:12px;
+padding:13px;
+border-bottom:1px solid #e5e9f2;
+}
+
+.schedule-row:last-child{border-bottom:none}
+.schedule-time{color:#4266db;font-weight:bold}
+
+.settings{
+background:#f4f6ff;
+padding:18px;
+border-radius:14px;
+margin-top:15px;
+}
+
+.settings label{
+display:block;
+font-weight:bold;
+margin:10px 0 5px;
+}
+
+.settings input{
+width:100%;
+accent-color:#4266db;
+}
+
+.status{
+color:#3156bd;
+font-weight:bold;
+margin-top:12px;
+}
+
+footer{
+background:#25345b;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:40px;
+}
+
+/* التباين العالي */
+
+.high-contrast{
+background:black!important;
+color:white!important;
+}
+
+.high-contrast header,
+.high-contrast .panel,
+.high-contrast .item-card,
+.high-contrast .settings,
+.high-contrast .result{
+background:black!important;
+color:white!important;
+border:2px solid yellow!important;
+}
+
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast p,
+.high-contrast nav a,
+.high-contrast .schedule-time{
+color:white!important;
+}
+
+.high-contrast .tab-btn{
+background:#222!important;
+color:yellow!important;
+border:1px solid yellow;
+}
+
+.high-contrast .tab-btn.active{
+background:yellow!important;
+color:black!important;
+}
+
+.high-contrast .schedule-row{
+border-color:yellow;
+}
+
+@media(max-width:600px){
+header{justify-content:center;text-align:center}
+nav{justify-content:center}
+.panel{padding:18px}
+.schedule-row{flex-direction:column;gap:3px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">معًا <span>♥</span></div>
+
+<nav>
+<a href="index.html">الرئيسية</a>
+<a href="#activities">الأنشطة</a>
+<a href="#voiceSettings">إعدادات الصوت</a>
+</nav>
+</header>
+
+<main class="container">
+
+<div class="panel">
+<h2>🧩 قسم اضطراب طيف التوحد</h2>
+
+<p>
+مرحبًا بك في القسم التعليمي الخاص باضطراب طيف التوحد.
+يمكنك استخدام الأنشطة التالية للتعلم والتواصل والتعبير عن المشاعر.
+</p>
+
+<div class="buttons">
+<a class="back-btn" href="index.html">🏠 العودة للرئيسية</a>
+</div>
+</div>
+
+<div id="activities">
+
+<div class="tabs">
+<button class="tab-btn active" onclick="showTab('schedule',this)">
+📅 جدولي اليومي
+</button>
+
+<button class="tab-btn" onclick="showTab('communication',this)">
+💬 التواصل
+</button>
+
+<button class="tab-btn" onclick="showTab('emotions',this)">
+😊 المشاعر
+</button>
+</div>
+
+<!-- الجدول اليومي -->
+
+<div id="schedule" class="activity-box active panel">
+<h2>📅 جدولي اليومي</h2>
+<p>تعرف على الأنشطة اليومية بالترتيب.</p>
+
+<div class="schedule-row">
+<span>🌅 الاستيقاظ وغسل الوجه</span>
+<span class="schedule-time">الصباح</span>
+</div>
+
+<div class="schedule-row">
+<span>🍳 تناول وجبة الإفطار</span>
+<span class="schedule-time">الصباح</span>
+</div>
+
+<div class="schedule-row">
+<span>📚 وقت التعلم</span>
+<span class="schedule-time">الظهر</span>
+</div>
+
+<div class="schedule-row">
+<span>🍽️ تناول الغداء</span>
+<span class="schedule-time">بعد الظهر</span>
+</div>
+
+<div class="schedule-row">
+<span>🎮 وقت اللعب</span>
+<span class="schedule-time">العصر</span>
+</div>
+
+<div class="schedule-row">
+<span>🌙 الاستعداد للنوم</span>
+<span class="schedule-time">المساء</span>
+</div>
+</div>
+
+<!-- بطاقات التواصل -->
+
+<div id="communication" class="activity-box panel">
+
+<h2>💬 بطاقات التواصل</h2>
+<p>اضغط على البطاقة وسيتم نطق الرسالة مباشرة.</p>
+
+<div class="cards">
+
+<div class="item-card" onclick="selectMessage('أنا جائع')">
+<span class="emoji">🍎</span>
+<h3>أنا جائع</h3>
+<p>أريد تناول الطعام.</p>
+</div>
+
+<div class="item-card" onclick="selectMessage('أنا عطشان')">
+<span class="emoji">💧</span>
+<h3>أنا عطشان</h3>
+<p>أريد شرب الماء.</p>
+</div>
+
+<div class="item-card" onclick="selectMessage('أريد اللعب')">
+<span class="emoji">⚽</span>
+<h3>أريد اللعب</h3>
+<p>حان وقت اللعب.</p>
+</div>
+
+<div class="item-card" onclick="selectMessage('أريد المساعدة')">
+<span class="emoji">🙋</span>
+<h3>أريد المساعدة</h3>
+<p>من فضلك ساعدني.</p>
+</div>
+
+<div class="item-card" onclick="selectMessage('أريد الراحة')">
+<span class="emoji">😴</span>
+<h3>أريد الراحة</h3>
+<p>أحتاج إلى الراحة.</p>
+</div>
+
+<div class="item-card" onclick="selectMessage('شكرًا لك')">
+<span class="emoji">❤️</span>
+<h3>شكرًا</h3>
+<p>شكرًا لك.</p>
+</div>
+
+</div>
+
+<div class="result" id="messageResult" aria-live="polite">
+اختر بطاقة من البطاقات السابقة.
+</div>
+
+<div class="buttons">
+<button class="stop" onclick="stopSpeech()">⏹ إيقاف الصوت</button>
+</div>
+
+</div>
+
+<!-- المشاعر -->
+
+<div id="emotions" class="activity-box panel">
+
+<h2>😊 التعرف على المشاعر</h2>
+<p>اضغط على الشعور وسيتم نطقه مباشرة.</p>
+
+<div class="cards">
+
+<div class="item-card" onclick="selectEmotion('سعيد')">
+<span class="emoji">😄</span>
+<h3>سعيد</h3>
+</div>
+
+<div class="item-card" onclick="selectEmotion('حزين')">
+<span class="emoji">😢</span>
+<h3>حزين</h3>
+</div>
+
+<div class="item-card" onclick="selectEmotion('غاضب')">
+<span class="emoji">😡</span>
+<h3>غاضب</h3>
+</div>
+
+<div class="item-card" onclick="selectEmotion('خائف')">
+<span class="emoji">😨</span>
+<h3>خائف</h3>
+</div>
+
+<div class="item-card" onclick="selectEmotion('هادئ')">
+<span class="emoji">😌</span>
+<h3>هادئ</h3>
+</div>
+
+<div class="item-card" onclick="selectEmotion('متحمس')">
+<span class="emoji">🤩</span>
+<h3>متحمس</h3>
+</div>
+
+</div>
+
+<div class="result" id="emotionResult" aria-live="polite">
+اختر الشعور المناسب لك.
+</div>
+
+<div class="buttons">
+<button class="stop" onclick="stopSpeech()">⏹ إيقاف الصوت</button>
+</div>
+
+</div>
+
+</div>
+
+<!-- إعدادات الصوت -->
+
+<section class="panel" id="voiceSettings">
+
+<h2>🎙️ إعدادات الصوت</h2>
+
+<div class="settings">
+
+<label for="speechRate">
+سرعة الكلام:
+<span id="rateValue">0.70</span>
+</label>
+
+<input
+type="range"
+id="speechRate"
+min="0.70"
+max="1.2"
+step="0.05"
+value="0.70"
+oninput="updateRate(this.value)"
+>
+
+<div class="buttons">
+<button onclick="testVoice()">▶ تجربة الصوت</button>
+<button class="stop" onclick="stopSpeech()">⏹ إيقاف الصوت</button>
+</div>
+
+<p class="status" id="voiceStatus" aria-live="polite">
+جاري البحث عن الأصوات العربية...
+</p>
+
+</div>
+</section>
+
+<!-- إعدادات القراءة -->
+
+<section class="panel">
+<h2>🔠 إعدادات القراءة</h2>
+
+<div class="buttons">
+<button onclick="changeGlobalFont(2)">تكبير الخط A+</button>
+<button onclick="changeGlobalFont(-2)">تصغير الخط A-</button>
+<button class="dark" onclick="toggleGlobalContrast()">◐ التباين العالي</button>
+</div>
+</section>
+
+</main>
+
+<footer>
+<p>معًا - عالم بلا حواجز © 2026</p>
+<p>التعلم حق للجميع</p>
+</footer>
+
+<script>
+
+let selectedMessage="";
+let selectedEmotion="";
+let arabicVoice=null;
+let speechRate=0.70;
+let globalFontSize=16;
+
+/* التنقل بين الأنشطة */
+
+function showTab(tabId,button){
+
+document.querySelectorAll(".activity-box").forEach(box=>{
+box.classList.remove("active");
+});
+
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+btn.classList.remove("active");
+});
+
+document.getElementById(tabId).classList.add("active");
+
+if(button){
+button.classList.add("active");
+}
+
+stopSpeech();
+}
+
+/* التواصل: تشغيل الصوت بمجرد الضغط */
+
+function selectMessage(message){
+
+selectedMessage=message;
+
+document.getElementById("messageResult").innerText=
+"الرسالة المختارة: "+message;
+
+readText(message);
+}
+
+/* المشاعر: تشغيل الصوت بمجرد الضغط */
+
+function selectEmotion(emotion){
+
+selectedEmotion=emotion;
+
+document.getElementById("emotionResult").innerText=
+"الشعور الذي اخترته: "+emotion;
+
+readText("أنا أشعر أنني "+emotion);
+}
+
+/* تحميل الأصوات العربية */
+
+function loadVoices(){
+
+if(!("speechSynthesis" in window)){
+document.getElementById("voiceStatus").innerText=
+"المتصفح لا يدعم القراءة الصوتية.";
+return;
+}
+
+const voices=window.speechSynthesis.getVoices();
+
+const arabicVoices=voices.filter(voice=>
+voice.lang.toLowerCase().startsWith("ar")
+);
+
+if(arabicVoices.length){
+
+arabicVoice=
+arabicVoices.find(v=>v.lang.toLowerCase()==="ar-eg")||
+arabicVoices.find(v=>v.lang.toLowerCase().includes("ar-sa"))||
+arabicVoices[0];
+
+document.getElementById("voiceStatus").innerText=
+"الصوت المستخدم: "+arabicVoice.name;
+
+}else{
+
+document.getElementById("voiceStatus").innerText=
+"لم يتم العثور على صوت عربي. تأكد من تثبيت الصوت العربي في الجهاز.";
+
+}
+}
+
+if("speechSynthesis" in window){
+loadVoices();
+window.speechSynthesis.onvoiceschanged=loadVoices;
+}
+
+/* تشغيل الصوت */
+
+function readText(text){
+
+if(!("speechSynthesis" in window)){
+alert("المتصفح لا يدعم القراءة الصوتية.");
+return;
+}
+
+if(!text||!text.trim())return;
+
+window.speechSynthesis.cancel();
+
+const speech=new SpeechSynthesisUtterance(text);
+
+speech.lang=arabicVoice?arabicVoice.lang:"ar-EG";
+
+if(arabicVoice){
+speech.voice=arabicVoice;
+}
+
+speech.rate=speechRate;
+speech.pitch=1.05;
+speech.volume=1;
+
+speech.onstart=()=>{
+document.getElementById("voiceStatus").innerText=
+"🔊 يتم تشغيل الصوت الآن...";
+};
+
+speech.onend=()=>{
+document.getElementById("voiceStatus").innerText=
+arabicVoice
+?"الصوت المستخدم: "+arabicVoice.name
+:"انتهت القراءة.";
+};
+
+speech.onerror=()=>{
+document.getElementById("voiceStatus").innerText=
+"حدث خطأ أثناء تشغيل الصوت.";
+};
+
+window.speechSynthesis.speak(speech);
+}
+
+/* التحكم في سرعة الصوت */
+
+function updateRate(value){
+
+speechRate=parseFloat(value);
+
+document.getElementById("rateValue").innerText=
+speechRate.toFixed(2);
+}
+
+/* تجربة الصوت */
+
+function testVoice(){
+
+readText("مرحبًا بك في قسم اضطراب طيف التوحد. يمكنك التعلم والتواصل بسهولة.");
+}
+
+/* إيقاف الصوت */
+
+function stopSpeech(){
+
+if("speechSynthesis" in window){
+window.speechSynthesis.cancel();
+}
+
+const status=document.getElementById("voiceStatus");
+
+if(status){
+status.innerText=arabicVoice
+?"الصوت المستخدم: "+arabicVoice.name
+:"تم إيقاف الصوت.";
+}
+}
+
+/* تكبير وتصغير الخط */
+
+function changeGlobalFont(change){
+
+globalFontSize=Math.max(
+12,
+Math.min(30,globalFontSize+change)
+);
+
+document.body.style.fontSize=
+globalFontSize+"px";
+}
+
+/* التباين العالي */
+
+function toggleGlobalContrast(){
+
+document.body.classList.toggle("high-contrast");
+}
+
+</script>
+
+</body>
+</html>

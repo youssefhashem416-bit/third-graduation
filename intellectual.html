@@ -1,0 +1,796 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>معًا | قسم الإعاقة الذهنية</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Tahoma, Arial, sans-serif;
+    background: #f5f7fc;
+    color: #26334a;
+    line-height: 1.9;
+}
+
+header {
+    background: white;
+    padding: 16px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 3px 15px #00000010;
+}
+
+.logo {
+    font-size: 27px;
+    color: #4266db;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #f4a742;
+}
+
+header a {
+    color: #34415a;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+button, textarea {
+    font-family: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 4px solid orange;
+    outline-offset: 3px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #eaf0ff, #fff5e9);
+    padding: 50px 8%;
+    text-align: center;
+}
+
+.hero h1 {
+    color: #304fc0;
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #58647b;
+    font-size: 18px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
+
+.panel {
+    background: white;
+    padding: 25px;
+    margin-bottom: 22px;
+    border-radius: 18px;
+    box-shadow: 0 5px 22px #26334a12;
+}
+
+.panel h2 {
+    color: #304fc0;
+    margin-bottom: 12px;
+    font-size: 24px;
+}
+
+.panel p {
+    color: #58647b;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.card {
+    background: #f4f6ff;
+    border: 2px solid #e0e7ff;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.card:hover {
+    background: #eaf0ff;
+    transform: translateY(-3px);
+}
+
+.card .emoji {
+    display: block;
+    font-size: 40px;
+    margin-bottom: 8px;
+}
+
+.card h3 {
+    color: #304fc0;
+}
+
+.card p {
+    font-size: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+    background: #4266db;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: .88;
+}
+
+.stop {
+    background: #c0392b;
+}
+
+.dark {
+    background: #25345b;
+}
+
+.result {
+    background: #eaf0ff;
+    padding: 17px;
+    border-radius: 12px;
+    margin-top: 15px;
+    color: #304fc0;
+    font-weight: bold;
+    min-height: 55px;
+}
+
+.settings {
+    background: #f4f6ff;
+    padding: 18px;
+    border-radius: 14px;
+    margin-top: 15px;
+}
+
+.settings label {
+    display: block;
+    font-weight: bold;
+    margin: 12px 0 5px;
+}
+
+.settings input {
+    width: 100%;
+    accent-color: #4266db;
+}
+
+.note {
+    background: #fff4dc;
+    color: #664b16;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 15px;
+}
+
+.status {
+    color: #3156bd;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.back-container {
+    text-align: center;
+    margin: 35px 0;
+}
+
+.back {
+    display: inline-block;
+    background: #25345b;
+    color: white;
+    text-decoration: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+footer {
+    background: #25345b;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+/* التباين العالي */
+
+.high-contrast {
+    background: black !important;
+    color: white !important;
+}
+
+.high-contrast header,
+.high-contrast .panel,
+.high-contrast .card,
+.high-contrast .settings,
+.high-contrast .result {
+    background: black !important;
+    color: white !important;
+    border: 2px solid yellow !important;
+}
+
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast p,
+.high-contrast label,
+.high-contrast header a {
+    color: white !important;
+}
+
+.high-contrast .note {
+    background: #222 !important;
+    color: yellow !important;
+    border: 2px solid yellow;
+}
+
+@media(max-width:600px) {
+    header {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+    }
+
+    .panel {
+        padding: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">معًا <span>♥</span></div>
+    <a href="index.html">🏠 العودة إلى الصفحة الرئيسية</a>
+</header>
+
+<section class="hero">
+    <h1>🧠 قسم الإعاقة الذهنية</h1>
+    <p>نتعلم معًا خطوة بخطوة من خلال أنشطة بسيطة وتفاعلية.</p>
+</section>
+
+<main class="container">
+
+    <!-- مقدمة -->
+
+    <section class="panel">
+        <h2>مرحبًا بك في رحلة التعلم</h2>
+        <p>
+            يقدم هذا القسم مجموعة من الأنشطة التعليمية المبسطة
+            التي تساعد على تنمية مهارات التعرف والتمييز والعد
+            والتفكير من خلال التفاعل والتكرار.
+        </p>
+    </section>
+
+    <!-- الحروف -->
+
+    <section class="panel">
+        <h2>🔤 تعلم الحروف العربية</h2>
+        <p>اضغط على أي حرف لتسمع اسمه ومثالًا عليه.</p>
+
+        <div class="cards">
+
+            <div class="card" onclick="learnLetter('ألف','أرنب')">
+                <span class="emoji">🐰</span>
+                <h3>أ</h3>
+                <p>أرنب</p>
+            </div>
+
+            <div class="card" onclick="learnLetter('باء','بطة')">
+                <span class="emoji">🦆</span>
+                <h3>ب</h3>
+                <p>بطة</p>
+            </div>
+
+            <div class="card" onclick="learnLetter('تاء','تفاحة')">
+                <span class="emoji">🍎</span>
+                <h3>ت</h3>
+                <p>تفاحة</p>
+            </div>
+
+            <div class="card" onclick="learnLetter('جيم','جمل')">
+                <span class="emoji">🐪</span>
+                <h3>ج</h3>
+                <p>جمل</p>
+            </div>
+
+            <div class="card" onclick="learnLetter('دال','دب')">
+                <span class="emoji">🐻</span>
+                <h3>د</h3>
+                <p>دب</p>
+            </div>
+
+            <div class="card" onclick="learnLetter('سين','سمكة')">
+                <span class="emoji">🐟</span>
+                <h3>س</h3>
+                <p>سمكة</p>
+            </div>
+
+        </div>
+
+        <div class="result" id="letterResult" aria-live="polite">
+            اختر حرفًا للبدء.
+        </div>
+    </section>
+
+    <!-- الأرقام -->
+
+    <section class="panel">
+        <h2>🔢 تعلم الأرقام والعد</h2>
+        <p>تعرف على الأرقام من خلال الصور.</p>
+
+        <div class="cards">
+
+            <div class="card" onclick="learnNumber(1,'🍎')">
+                <span class="emoji">🍎</span>
+                <h3>1 - واحد</h3>
+            </div>
+
+            <div class="card" onclick="learnNumber(2,'🍎🍎')">
+                <span class="emoji">🍎🍎</span>
+                <h3>2 - اثنان</h3>
+            </div>
+
+            <div class="card" onclick="learnNumber(3,'🍎🍎🍎')">
+                <span class="emoji">🍎🍎🍎</span>
+                <h3>3 - ثلاثة</h3>
+            </div>
+
+            <div class="card" onclick="learnNumber(4,'⭐ ⭐ ⭐ ⭐')">
+                <span class="emoji">⭐⭐⭐⭐</span>
+                <h3>4 - أربعة</h3>
+            </div>
+
+            <div class="card" onclick="learnNumber(5,'⚽ ⚽ ⚽ ⚽ ⚽')">
+                <span class="emoji">⚽⚽⚽⚽⚽</span>
+                <h3>5 - خمسة</h3>
+            </div>
+
+        </div>
+
+        <div class="result" id="numberResult" aria-live="polite">
+            اختر رقمًا للتعلم.
+        </div>
+    </section>
+
+    <!-- الألوان -->
+
+    <section class="panel">
+        <h2>🎨 تعلم الألوان</h2>
+        <p>اضغط على اللون لمعرفة اسمه.</p>
+
+        <div class="cards">
+
+            <div class="card" onclick="learnColor('الأحمر')">
+                <span class="emoji">🔴</span>
+                <h3>أحمر</h3>
+            </div>
+
+            <div class="card" onclick="learnColor('الأزرق')">
+                <span class="emoji">🔵</span>
+                <h3>أزرق</h3>
+            </div>
+
+            <div class="card" onclick="learnColor('الأخضر')">
+                <span class="emoji">🟢</span>
+                <h3>أخضر</h3>
+            </div>
+
+            <div class="card" onclick="learnColor('الأصفر')">
+                <span class="emoji">🟡</span>
+                <h3>أصفر</h3>
+            </div>
+
+            <div class="card" onclick="learnColor('البرتقالي')">
+                <span class="emoji">🟠</span>
+                <h3>برتقالي</h3>
+            </div>
+
+            <div class="card" onclick="learnColor('البنفسجي')">
+                <span class="emoji">🟣</span>
+                <h3>بنفسجي</h3>
+            </div>
+
+        </div>
+
+        <div class="result" id="colorResult" aria-live="polite">
+            اختر لونًا للتعلم.
+        </div>
+    </section>
+
+    <!-- اختبار تفاعلي -->
+
+    <section class="panel">
+        <h2>🧩 اختبر معلوماتك</h2>
+        <p id="question">كم عدد التفاحات الموجودة؟</p>
+
+        <div style="font-size:55px; margin:15px 0;" id="questionImage">
+            🍎🍎🍎
+        </div>
+
+        <div class="buttons">
+            <button onclick="checkAnswer(2)">2</button>
+            <button onclick="checkAnswer(3)">3</button>
+            <button onclick="checkAnswer(4)">4</button>
+        </div>
+
+        <div class="result" id="quizResult" aria-live="polite">
+            اختر الإجابة الصحيحة.
+        </div>
+
+        <div class="buttons">
+            <button class="dark" onclick="nextQuestion()">السؤال التالي ←</button>
+        </div>
+    </section>
+
+    <!-- إعدادات الصوت -->
+
+    <section class="panel">
+        <h2>🔊 إعدادات الصوت</h2>
+
+        <div class="settings">
+
+            <label for="speed">
+                سرعة الكلام:
+                <span id="speedValue">0.90</span>
+            </label>
+
+            <input
+                type="range"
+                id="speed"
+                min="0.65"
+                max="1.2"
+                step="0.05"
+                value="0.9"
+                oninput="changeSpeed(this.value)"
+            >
+
+            <div class="buttons">
+                <button onclick="testVoice()">▶ تجربة الصوت</button>
+                <button class="stop" onclick="stopSpeech()">⏹ إيقاف الصوت</button>
+            </div>
+
+            <p class="status" id="voiceStatus" aria-live="polite">
+                جاري البحث عن الأصوات العربية...
+            </p>
+
+        </div>
+    </section>
+
+    <!-- إعدادات سهولة الاستخدام -->
+
+    <section class="panel">
+        <h2>⚙️ إعدادات سهولة الاستخدام</h2>
+
+        <div class="buttons">
+            <button onclick="changeFont(2)">تكبير الخط A+</button>
+            <button onclick="changeFont(-2)">تصغير الخط A-</button>
+            <button class="dark" onclick="toggleContrast()">◐ التباين العالي</button>
+        </div>
+
+        <div class="note">
+            💡 يمكنك استخدام الأنشطة أكثر من مرة، والتعلم بالسرعة المناسبة لك.
+        </div>
+    </section>
+
+    <div class="back-container">
+        <a href="index.html" class="back">العودة إلى الصفحة الرئيسية</a>
+    </div>
+
+</main>
+
+<footer>
+    <p>معًا - عالم بلا حواجز © 2026</p>
+    <p>التعلم حق للجميع</p>
+</footer>
+
+<script>
+
+/* الصوت العربي */
+
+let arabicVoice = null;
+let speechRate = 0.9;
+
+function loadVoices() {
+
+    if (!("speechSynthesis" in window)) {
+        document.getElementById("voiceStatus").innerText =
+            "المتصفح لا يدعم القراءة الصوتية.";
+        return;
+    }
+
+    const voices = window.speechSynthesis.getVoices();
+
+    const arabicVoices = voices.filter(function(voice) {
+        return voice.lang.toLowerCase().startsWith("ar");
+    });
+
+    if (arabicVoices.length > 0) {
+
+        arabicVoice =
+            arabicVoices.find(v => v.lang.toLowerCase() === "ar-eg") ||
+            arabicVoices.find(v => v.lang.toLowerCase().includes("ar-sa")) ||
+            arabicVoices[0];
+
+        document.getElementById("voiceStatus").innerText =
+            "الصوت المستخدم: " + arabicVoice.name;
+
+    } else {
+
+        document.getElementById("voiceStatus").innerText =
+            "لم يتم العثور على صوت عربي.";
+
+    }
+}
+
+if ("speechSynthesis" in window) {
+    loadVoices();
+    window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function speak(text) {
+
+    if (!("speechSynthesis" in window)) {
+        alert("المتصفح لا يدعم القراءة الصوتية.");
+        return;
+    }
+
+    if (!text || !text.trim()) return;
+
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = arabicVoice ? arabicVoice.lang : "ar-EG";
+
+    if (arabicVoice) {
+        speech.voice = arabicVoice;
+    }
+
+    speech.rate = speechRate;
+    speech.pitch = 1.05;
+    speech.volume = 1;
+
+    speech.onstart = function() {
+        document.getElementById("voiceStatus").innerText =
+            "🔊 يتم تشغيل الصوت...";
+    };
+
+    speech.onend = function() {
+        document.getElementById("voiceStatus").innerText =
+            arabicVoice
+            ? "الصوت المستخدم: " + arabicVoice.name
+            : "انتهت القراءة.";
+    };
+
+    window.speechSynthesis.speak(speech);
+}
+
+function stopSpeech() {
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+        document.getElementById("voiceStatus").innerText =
+            "تم إيقاف الصوت.";
+    }
+}
+
+function testVoice() {
+    speak("مرحبًا بك في قسم الإعاقة الذهنية. هيا نتعلم معًا.");
+}
+
+/* سرعة الصوت */
+
+function changeSpeed(value) {
+    speechRate = parseFloat(value);
+
+    document.getElementById("speedValue").innerText =
+        speechRate.toFixed(2);
+}
+
+/* تعلم الحروف */
+
+function learnLetter(letter, example) {
+
+    const text = letter + " مثل " + example;
+
+    document.getElementById("letterResult").innerText = text;
+
+    speak(text);
+}
+
+/* تعلم الأرقام */
+
+function learnNumber(number, pictures) {
+
+    const names = {
+        1: "واحد",
+        2: "اثنان",
+        3: "ثلاثة",
+        4: "أربعة",
+        5: "خمسة"
+    };
+
+    const text = "الرقم " + names[number];
+
+    document.getElementById("numberResult").innerText =
+        pictures + " عددها " + text;
+
+    speak(text);
+}
+
+/* تعلم الألوان */
+
+function learnColor(color) {
+
+    document.getElementById("colorResult").innerText =
+        "هذا اللون هو " + color;
+
+    speak("هذا اللون هو " + color);
+}
+
+/* الاختبار */
+
+const questions = [
+    {
+        question: "كم عدد التفاحات الموجودة؟",
+        image: "🍎🍎🍎",
+        answer: 3,
+        options: [2, 3, 4]
+    },
+    {
+        question: "كم عدد النجوم الموجودة؟",
+        image: "⭐⭐",
+        answer: 2,
+        options: [1, 2, 3]
+    },
+    {
+        question: "كم عدد الكرات الموجودة؟",
+        image: "⚽⚽⚽⚽",
+        answer: 4,
+        options: [2, 3, 4]
+    },
+    {
+        question: "كم عدد الموزات الموجودة؟",
+        image: "🍌",
+        answer: 1,
+        options: [1, 2, 3]
+    }
+];
+
+let currentQuestion = 0;
+
+function showQuestion() {
+
+    const q = questions[currentQuestion];
+
+    document.getElementById("question").innerText = q.question;
+    document.getElementById("questionImage").innerText = q.image;
+
+    const buttons = document.querySelectorAll(
+        "#quizResult ~ .buttons button"
+    );
+
+    const answerButtons = document.querySelectorAll(
+        ".panel .buttons button"
+    );
+
+    const quizPanel = document.getElementById("quizResult").parentElement;
+
+    const buttonsInsideQuiz = quizPanel.querySelectorAll(".buttons button");
+
+    buttonsInsideQuiz.forEach(function(button, index) {
+        if (index < 3) {
+            button.innerText = q.options[index];
+            button.setAttribute(
+                "onclick",
+                "checkAnswer(" + q.options[index] + ")"
+            );
+        }
+    });
+
+    document.getElementById("quizResult").innerText =
+        "اختر الإجابة الصحيحة.";
+}
+
+function checkAnswer(answer) {
+
+    const correct = questions[currentQuestion].answer;
+    const result = document.getElementById("quizResult");
+
+    if (answer === correct) {
+
+        result.innerText = "✅ أحسنت! إجابة صحيحة.";
+
+        speak("أحسنت! إجابة صحيحة.");
+
+    } else {
+
+        result.innerText = "❌ حاول مرة أخرى، أنت تستطيع.";
+
+        speak("حاول مرة أخرى، أنت تستطيع.");
+
+    }
+}
+
+function nextQuestion() {
+
+    currentQuestion++;
+
+    if (currentQuestion >= questions.length) {
+        currentQuestion = 0;
+    }
+
+    showQuestion();
+}
+
+/* تكبير وتصغير الخط */
+
+let fontSize = 18;
+
+function changeFont(amount) {
+
+    fontSize += amount;
+
+    if (fontSize < 14) fontSize = 14;
+    if (fontSize > 34) fontSize = 34;
+
+    document.querySelectorAll(
+        ".panel, .hero, header, footer"
+    ).forEach(function(element) {
+        element.style.fontSize = fontSize + "px";
+    });
+}
+
+/* التباين العالي */
+
+function toggleContrast() {
+    document.body.classList.toggle("high-contrast");
+}
+
+/* تحميل أول سؤال */
+
+showQuestion();
+
+</script>
+
+</body>
+</html>
