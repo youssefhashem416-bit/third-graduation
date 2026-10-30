@@ -1,9 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>معًا | قسم الإعاقة الذهنية</title>
+
+<!-- إعدادات تطبيق PWA -->
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#4266db">
+<meta name="description" content="قسم الإعاقة الذهنية - أنشطة تعليمية تفاعلية للتعلم خطوة بخطوة.">
 
 <style>
 * {
@@ -290,8 +295,6 @@ footer {
 
 <main class="container">
 
-    <!-- مقدمة -->
-
     <section class="panel">
         <h2>مرحبًا بك في رحلة التعلم</h2>
         <p>
@@ -447,7 +450,7 @@ footer {
             🍎🍎🍎
         </div>
 
-        <div class="buttons">
+        <div class="buttons" id="answerButtons">
             <button onclick="checkAnswer(2)">2</button>
             <button onclick="checkAnswer(3)">3</button>
             <button onclick="checkAnswer(4)">4</button>
@@ -471,7 +474,7 @@ footer {
 
             <label for="speed">
                 سرعة الكلام:
-                <span id="speedValue">0.90</span>
+                <span id="speedValue">0.70</span>
             </label>
 
             <input
@@ -480,7 +483,7 @@ footer {
                 min="0.65"
                 max="1.2"
                 step="0.05"
-                value="0.9"
+                value="0.70"
                 oninput="changeSpeed(this.value)"
             >
 
@@ -528,7 +531,7 @@ footer {
 /* الصوت العربي */
 
 let arabicVoice = null;
-let speechRate = 0.9;
+let speechRate = 0.70;
 
 function loadVoices() {
 
@@ -600,6 +603,11 @@ function speak(text) {
             arabicVoice
             ? "الصوت المستخدم: " + arabicVoice.name
             : "انتهت القراءة.";
+    };
+
+    speech.onerror = function() {
+        document.getElementById("voiceStatus").innerText =
+            "حدث خطأ أثناء تشغيل الصوت.";
     };
 
     window.speechSynthesis.speak(speech);
@@ -705,26 +713,16 @@ function showQuestion() {
     document.getElementById("question").innerText = q.question;
     document.getElementById("questionImage").innerText = q.image;
 
-    const buttons = document.querySelectorAll(
-        "#quizResult ~ .buttons button"
-    );
-
     const answerButtons = document.querySelectorAll(
-        ".panel .buttons button"
+        "#answerButtons button"
     );
 
-    const quizPanel = document.getElementById("quizResult").parentElement;
-
-    const buttonsInsideQuiz = quizPanel.querySelectorAll(".buttons button");
-
-    buttonsInsideQuiz.forEach(function(button, index) {
-        if (index < 3) {
-            button.innerText = q.options[index];
-            button.setAttribute(
-                "onclick",
-                "checkAnswer(" + q.options[index] + ")"
-            );
-        }
+    answerButtons.forEach(function(button, index) {
+        button.innerText = q.options[index];
+        button.setAttribute(
+            "onclick",
+            "checkAnswer(" + q.options[index] + ")"
+        );
     });
 
     document.getElementById("quizResult").innerText =
@@ -739,13 +737,11 @@ function checkAnswer(answer) {
     if (answer === correct) {
 
         result.innerText = "✅ أحسنت! إجابة صحيحة.";
-
         speak("أحسنت! إجابة صحيحة.");
 
     } else {
 
         result.innerText = "❌ حاول مرة أخرى، أنت تستطيع.";
-
         speak("حاول مرة أخرى، أنت تستطيع.");
 
     }
@@ -789,6 +785,34 @@ function toggleContrast() {
 /* تحميل أول سؤال */
 
 showQuestion();
+
+/* تسجيل Service Worker الخاص بتطبيق PWA */
+
+if ("serviceWorker" in navigator) {
+
+    window.addEventListener("load", function() {
+
+        navigator.serviceWorker.register("./service-worker.js")
+        .then(function(registration) {
+
+            console.log(
+                "تم تسجيل التطبيق بنجاح:",
+                registration.scope
+            );
+
+        })
+        .catch(function(error) {
+
+            console.error(
+                "خطأ في تسجيل التطبيق:",
+                error
+            );
+
+        });
+
+    });
+
+}
 
 </script>
 
