@@ -1,51 +1,255 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>معًا - عالم بلا حواجز</title>
 
+<!-- إعدادات تطبيق PWA -->
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#4266db">
+<meta name="description" content="معًا - عالم بلا حواجز، بيئة تعليمية تفاعلية لدعم التعلم والتواصل.">
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Tahoma,Arial,sans-serif;background:#f5f7fc;color:#26334a;line-height:1.9;transition:.3s}
-header{background:white;padding:16px 7%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;box-shadow:0 3px 15px #00000010}
-.logo{font-size:28px;color:#4266db;font-weight:bold}
-.logo span{color:#f4a742}
-nav{display:flex;gap:18px;flex-wrap:wrap}
-nav a{color:#34415a;text-decoration:none;font-weight:bold}
-button,a{font-family:inherit}
-button:focus-visible,a:focus-visible,input:focus-visible{outline:4px solid orange;outline-offset:3px}
-.hero{background:linear-gradient(120deg,#eaf0ff,#fff5e9);padding:65px 8%;text-align:center}
-.hero h1{font-size:38px;color:#304fc0;margin-bottom:12px}
-.hero p{color:#58647b;font-size:19px;max-width:750px;margin:auto}
-.container{max-width:1100px;margin:35px auto;padding:0 18px}
-.section-title{text-align:center;margin-bottom:25px}
-.section-title h2{color:#304fc0;font-size:28px}
-.section-title p{color:#69758a}
-.disability-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.disability-card{background:white;padding:25px;border-radius:18px;text-align:center;box-shadow:0 5px 22px #26334a12;transition:.3s}
-.disability-card:hover{transform:translateY(-5px)}
-.disability-card .emoji{font-size:55px;margin-bottom:10px}
-.disability-card h3{color:#304fc0;margin-bottom:8px}
-.disability-card p{color:#69758a;margin-bottom:15px}
-.action-btn{display:inline-block;background:#4266db;color:white;text-decoration:none;border:none;padding:11px 23px;border-radius:10px;cursor:pointer;font-size:16px}
-.action-btn:hover{background:#304fc0}
-.panel{background:white;padding:25px;margin-bottom:22px;border-radius:18px;box-shadow:0 5px 22px #26334a12}
-.panel h2{color:#304fc0;margin-bottom:12px}
-.panel p{color:#58647b}
-.buttons{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
-.buttons button{padding:11px 18px;border:none;border-radius:10px;background:#4266db;color:white;font-size:15px;cursor:pointer}
-.buttons .dark{background:#25345b}
-footer{background:#25345b;color:white;text-align:center;padding:25px;margin-top:40px}
-.high-contrast{background:black!important;color:white!important}
-.high-contrast header,.high-contrast .panel,.high-contrast .disability-card{background:black!important;color:white!important;border:2px solid yellow!important}
-.high-contrast h1,.high-contrast h2,.high-contrast h3,.high-contrast p,.high-contrast nav a{color:white!important}
-.high-contrast .hero{background:black!important}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Tahoma,Arial,sans-serif;
+    background:#f5f7fc;
+    color:#26334a;
+    line-height:1.9;
+    transition:.3s;
+}
+
+header{
+    background:white;
+    padding:16px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    box-shadow:0 3px 15px #00000010;
+}
+
+.logo{
+    font-size:28px;
+    color:#4266db;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#f4a742;
+}
+
+nav{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    color:#34415a;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+button,a{
+    font-family:inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible{
+    outline:4px solid orange;
+    outline-offset:3px;
+}
+
+.hero{
+    background:linear-gradient(120deg,#eaf0ff,#fff5e9);
+    padding:65px 8%;
+    text-align:center;
+}
+
+.hero h1{
+    font-size:38px;
+    color:#304fc0;
+    margin-bottom:12px;
+}
+
+.hero p{
+    color:#58647b;
+    font-size:19px;
+    max-width:750px;
+    margin:auto;
+}
+
+.container{
+    max-width:1100px;
+    margin:35px auto;
+    padding:0 18px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.section-title h2{
+    color:#304fc0;
+    font-size:28px;
+}
+
+.section-title p{
+    color:#69758a;
+}
+
+.disability-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.disability-card{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 5px 22px #26334a12;
+    transition:.3s;
+}
+
+.disability-card:hover{
+    transform:translateY(-5px);
+}
+
+.disability-card .emoji{
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+.disability-card h3{
+    color:#304fc0;
+    margin-bottom:8px;
+}
+
+.disability-card p{
+    color:#69758a;
+    margin-bottom:15px;
+}
+
+.action-btn{
+    display:inline-block;
+    background:#4266db;
+    color:white;
+    text-decoration:none;
+    border:none;
+    padding:11px 23px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.action-btn:hover{
+    background:#304fc0;
+}
+
+.panel{
+    background:white;
+    padding:25px;
+    margin-bottom:22px;
+    border-radius:18px;
+    box-shadow:0 5px 22px #26334a12;
+}
+
+.panel h2{
+    color:#304fc0;
+    margin-bottom:12px;
+}
+
+.panel p{
+    color:#58647b;
+}
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:15px;
+}
+
+.buttons button{
+    padding:11px 18px;
+    border:none;
+    border-radius:10px;
+    background:#4266db;
+    color:white;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.buttons .dark{
+    background:#25345b;
+}
+
+footer{
+    background:#25345b;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:40px;
+}
+
+/* التباين العالي */
+
+.high-contrast{
+    background:black!important;
+    color:white!important;
+}
+
+.high-contrast header,
+.high-contrast .panel,
+.high-contrast .disability-card{
+    background:black!important;
+    color:white!important;
+    border:2px solid yellow!important;
+}
+
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast p,
+.high-contrast nav a{
+    color:white!important;
+}
+
+.high-contrast .hero{
+    background:black!important;
+}
+
 @media(max-width:600px){
-header{justify-content:center;text-align:center}
-nav{justify-content:center}
-.hero h1{font-size:29px}
-.panel{padding:18px}
+
+    header{
+        justify-content:center;
+        text-align:center;
+    }
+
+    nav{
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:29px;
+    }
+
+    .panel{
+        padding:18px;
+    }
 }
 </style>
 </head>
@@ -53,91 +257,217 @@ nav{justify-content:center}
 <body>
 
 <header>
-<div class="logo">معًا <span>♥</span></div>
-<nav>
-<a href="index.html">الرئيسية</a>
-<a href="#sections">الأقسام</a>
-<a href="#settings">الإعدادات</a>
-</nav>
+
+    <div class="logo">معًا <span>♥</span></div>
+
+    <nav>
+        <a href="index.html">الرئيسية</a>
+        <a href="#sections">الأقسام</a>
+        <a href="#settings">الإعدادات</a>
+    </nav>
+
 </header>
+
+<!-- الصفحة الرئيسية -->
 
 <div id="homePage">
 
-<section class="hero">
-<h1>معًا - عالم بلا حواجز</h1>
-<p>بيئة تعليمية تفاعلية تهدف إلى دعم التعلم والتواصل وتوفير تجربة سهلة ومناسبة للجميع.</p>
-</section>
+    <section class="hero">
 
-<main class="container">
+        <h1>معًا - عالم بلا حواجز</h1>
 
-<section id="sections">
-<div class="section-title">
-<h2>أقسام الموقع</h2>
-<p>اختر القسم الذي تريد الدخول إليه</p>
-</div>
+        <p>
+            بيئة تعليمية تفاعلية تهدف إلى دعم التعلم والتواصل
+            وتوفير تجربة سهلة ومناسبة للجميع.
+        </p>
 
-<div class="disability-grid">
+    </section>
 
-<div class="disability-card">
-<div class="emoji">🧩</div>
-<h3>اضطراب طيف التوحد</h3>
-<p>أنشطة تفاعلية للتواصل والتعرف على المشاعر وتنظيم الأنشطة اليومية.</p>
-<a class="action-btn" href="autism.html">ابدأ الآن</a>
-</div>
+    <main class="container">
 
-<div class="disability-card">
-<div class="emoji">🧠</div>
-<h3>الإعاقة الذهنية</h3>
-<p>أنشطة تعليمية مبسطة لتنمية المهارات والتعلم خطوة بخطوة.</p>
-<a class="action-btn" href="intellectual.html">ابدأ الآن</a>
-</div>
+        <!-- أقسام الموقع -->
 
-<div class="disability-card">
-<div class="emoji">👁️</div>
-<h3>الإعاقة البصرية</h3>
-<p>قراءة النصوص صوتيًا والتحكم في حجم الخط والتباين.</p>
-<a class="action-btn" href="visual.html">ابدأ الآن</a>
-</div>
+        <section id="sections">
 
-<div class="disability-card">
-<div class="emoji">🦻</div>
-<h3>الإعاقة السمعية</h3>
-<p>أنشطة بصرية وتفاعلية لتعلم الحروف والكلمات والتواصل.</p>
-<a class="action-btn" href="hearing.html">ابدأ الآن</a>
-</div>
+            <div class="section-title">
+                <h2>أقسام الموقع</h2>
+                <p>اختر القسم الذي تريد الدخول إليه</p>
+            </div>
 
-</div>
-</section>
+            <div class="disability-grid">
 
-<section class="panel" id="settings" style="margin-top:35px">
-<h2>⚙️ إعدادات سهولة الاستخدام</h2>
-<p>يمكنك تغيير حجم الخط والتباين في الصفحة الرئيسية.</p>
-<div class="buttons">
-<button onclick="changeGlobalFont(2)">تكبير الخط A+</button>
-<button onclick="changeGlobalFont(-2)">تصغير الخط A-</button>
-<button class="dark" onclick="toggleGlobalContrast()">◐ التباين العالي</button>
-</div>
-</section>
+                <!-- التوحد -->
 
-</main>
+                <div class="disability-card">
+
+                    <div class="emoji">🧩</div>
+
+                    <h3>اضطراب طيف التوحد</h3>
+
+                    <p>
+                        أنشطة تفاعلية للتواصل والتعرف على المشاعر
+                        وتنظيم الأنشطة اليومية.
+                    </p>
+
+                    <a class="action-btn" href="autism.html">
+                        ابدأ الآن
+                    </a>
+
+                </div>
+
+                <!-- الإعاقة الذهنية -->
+
+                <div class="disability-card">
+
+                    <div class="emoji">🧠</div>
+
+                    <h3>الإعاقة الذهنية</h3>
+
+                    <p>
+                        أنشطة تعليمية مبسطة لتنمية المهارات
+                        والتعلم خطوة بخطوة.
+                    </p>
+
+                    <a class="action-btn" href="intellectual.html">
+                        ابدأ الآن
+                    </a>
+
+                </div>
+
+                <!-- الإعاقة البصرية -->
+
+                <div class="disability-card">
+
+                    <div class="emoji">👁️</div>
+
+                    <h3>الإعاقة البصرية</h3>
+
+                    <p>
+                        قراءة النصوص صوتيًا والتحكم في حجم الخط
+                        والتباين.
+                    </p>
+
+                    <a class="action-btn" href="visual.html">
+                        ابدأ الآن
+                    </a>
+
+                </div>
+
+                <!-- الإعاقة السمعية -->
+
+                <div class="disability-card">
+
+                    <div class="emoji">🦻</div>
+
+                    <h3>الإعاقة السمعية</h3>
+
+                    <p>
+                        أنشطة بصرية وتفاعلية لتعلم الحروف
+                        والكلمات والتواصل.
+                    </p>
+
+                    <a class="action-btn" href="hearing.html">
+                        ابدأ الآن
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- إعدادات سهولة الاستخدام -->
+
+        <section class="panel" id="settings" style="margin-top:35px;">
+
+            <h2>⚙️ إعدادات سهولة الاستخدام</h2>
+
+            <p>
+                يمكنك تغيير حجم الخط والتباين في الصفحة الرئيسية.
+            </p>
+
+            <div class="buttons">
+
+                <button onclick="changeGlobalFont(2)">
+                    تكبير الخط A+
+                </button>
+
+                <button onclick="changeGlobalFont(-2)">
+                    تصغير الخط A-
+                </button>
+
+                <button class="dark" onclick="toggleGlobalContrast()">
+                    ◐ التباين العالي
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
 </div>
 
 <footer>
-<p>معًا - عالم بلا حواجز © 2026</p>
-<p>التعلم حق للجميع</p>
+
+    <p>معًا - عالم بلا حواجز © 2026</p>
+    <p>التعلم حق للجميع</p>
+
 </footer>
 
 <script>
-let globalFontSize=16;
+
+/* إعدادات الخط */
+
+let globalFontSize = 16;
 
 function changeGlobalFont(change){
-globalFontSize=Math.max(12,Math.min(30,globalFontSize+change));
-document.body.style.fontSize=globalFontSize+"px";
+
+    globalFontSize = Math.max(
+        12,
+        Math.min(30, globalFontSize + change)
+    );
+
+    document.body.style.fontSize =
+        globalFontSize + "px";
 }
 
+/* التباين العالي */
+
 function toggleGlobalContrast(){
-document.body.classList.toggle("high-contrast");
+
+    document.body.classList.toggle("high-contrast");
+
 }
+
+/* تسجيل Service Worker الخاص بالتطبيق */
+
+if("serviceWorker" in navigator){
+
+    window.addEventListener("load",function(){
+
+        navigator.serviceWorker.register("./service-worker.js")
+        .then(function(registration){
+
+            console.log(
+                "تم تسجيل التطبيق بنجاح:",
+                registration.scope
+            );
+
+        })
+        .catch(function(error){
+
+            console.error(
+                "حدث خطأ في تسجيل التطبيق:",
+                error
+            );
+
+        });
+
+    });
+
+}
+
 </script>
 
 </body>
