@@ -1,9 +1,13 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>معًا | قسم الإعاقة البصرية</title>
+
+<meta name="theme-color" content="#4266db">
+<meta name="description" content="قسم الإعاقة البصرية في موقع معًا، لقراءة النصوص والاستماع إليها بسهولة.">
+<link rel="manifest" href="./manifest.json">
 
 <style>
 * {
@@ -291,8 +295,6 @@ footer {
 
 <main class="container">
 
-    <!-- قارئ النصوص -->
-
     <section class="panel">
         <h2>🔊 قارئ النصوص</h2>
 
@@ -317,8 +319,6 @@ footer {
             اكتب نصًا أو اختر نصًا جاهزًا.
         </p>
     </section>
-
-    <!-- النصوص الجاهزة -->
 
     <section class="panel">
         <h2>📖 نصوص جاهزة للاستماع</h2>
@@ -349,8 +349,6 @@ footer {
         </div>
     </section>
 
-    <!-- أدوات تحسين القراءة -->
-
     <section class="panel">
         <h2>🔠 أدوات تحسين القراءة</h2>
         <p>تحكم في حجم الخط ووضوح الألوان حسب احتياجك.</p>
@@ -367,8 +365,6 @@ footer {
         </div>
     </section>
 
-    <!-- إعدادات الصوت -->
-
     <section class="panel">
         <h2>🎙️ إعدادات الصوت</h2>
 
@@ -376,7 +372,7 @@ footer {
 
             <label for="speed">
                 سرعة الكلام:
-                <span id="speedValue">0.90</span>
+                <span id="speedValue">0.70</span>
             </label>
 
             <input
@@ -385,7 +381,7 @@ footer {
                 min="0.65"
                 max="1.2"
                 step="0.05"
-                value="0.9"
+                value="0.70"
                 oninput="changeSpeed(this.value)"
             >
 
@@ -415,7 +411,7 @@ footer {
 <script>
 
 let fontSize = 18;
-let speechRate = 0.9;
+let speechRate = 0.70;
 let arabicVoice = null;
 
 /* البحث عن الصوت العربي */
@@ -566,6 +562,20 @@ function changeFont(amount) {
 
 function toggleContrast() {
     document.body.classList.toggle("high-contrast");
+}
+
+/* تسجيل Service Worker */
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+        navigator.serviceWorker.register("./service-worker.js")
+            .then(function() {
+                console.log("تم تسجيل Service Worker بنجاح");
+            })
+            .catch(function(error) {
+                console.error("حدث خطأ في تسجيل Service Worker:", error);
+            });
+    });
 }
 
 </script>
